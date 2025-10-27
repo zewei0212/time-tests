@@ -1,6 +1,36 @@
 import times
 import pytest
 
+@pytest.mark.parametrize(
+    ["time_range1", "time_range2", "expected"],
+    [
+        pytest.param(
+            times.time_range("2010-01-12 10:00:00", "2010-01-12 12:00:00"),
+            times.time_range("2010-01-12 10:30:00", "2010-01-12 10:45:00", 2, 60),
+            [
+                ("2010-01-12 10:30:00", "2010-01-12 10:37:00"),
+                ("2010-01-12 10:38:00", "2010-01-12 10:45:00"),
+            ],
+            id="generic_overlap",
+        ),
+        pytest.param(
+            times.time_range("2010-01-12 06:00:00", "2010-01-12 07:00:00"),
+            times.time_range("2010-01-12 10:00:00", "2010-01-12 11:00:00"),
+            [],
+            id="no_overlap",
+        ),
+        pytest.param(
+            times.time_range("2010-01-12 10:00:00", "2010-01-12 12:00:00"),
+            times.time_range("2010-01-12 12:00:00", "2010-01-12 13:00:00"),
+            [],
+            id="touching_but_not_overlapping",
+        ),
+    ],
+)
+def test_overlap_parametrized(time_range1, time_range2, expected):
+    result = times.compute_overlap_time(time_range1, time_range2)
+    assert result == expected
+
 
 def test_given_input():
     """The content in expected cell is directly copied from the result 
