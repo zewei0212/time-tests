@@ -20,6 +20,7 @@ jobs:
         # This case we are only updating pip, but you could add other dependencies if needed.
         run: |
           python -m pip install --upgrade pip
+          pip install pytest
           # FIXME Is there anything else that needs to be installed?
       - name: Test with pytest
         run: |
