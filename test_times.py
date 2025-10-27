@@ -1,22 +1,24 @@
-import times  
+import times
+import pytest
+
+
 def test_given_input():
     """The content in expected cell is directly copied from the result 
     of times.py. The purpose of this function is test whether the results
     match, if match the result will be pass when input pytest -v
     in the terminal."""
-    
+
     large = times.time_range("2010-01-12 10:00:00", "2010-01-12 12:00:00")
-    short = times.time_range("2010-01-12 10:30:00", "2010-01-12 10:45:00", 2, 60)
+    short = times.time_range("2010-01-12 10:30:00",
+                             "2010-01-12 10:45:00", 2, 60)
 
     result = times.compute_overlap_time(large, short)
 
-   
-    expected = [('2010-01-12 10:30:00', '2010-01-12 10:37:00'), 
+    expected = [('2010-01-12 10:30:00', '2010-01-12 10:37:00'),
                 ('2010-01-12 10:38:00', '2010-01-12 10:45:00')]
-        
 
-    assert result == expected 
-    ## pass
+    assert result == expected
+    # pass
 
 
 def test_no_overlap():
@@ -26,7 +28,6 @@ def test_no_overlap():
 
     a = [("2010-01-12 07:00:00", "2010-01-12 08:00:00")]
 
-  
     b = [("2010-01-12 10:00:00", "2010-01-12 11:00:00")]
 
     result = times.compute_overlap_time(a, b)
@@ -42,7 +43,7 @@ def test_multiple_intervals_each_side():
         ("2010-01-12 09:00:00", "2010-01-12 10:00:00"),
         ("2010-01-12 11:00:00", "2010-01-12 12:00:00"),
     ]
-    
+
     b = [
         ("2010-01-12 09:40:00", "2010-01-12 09:50:00"),
         ("2010-01-12 11:35:00", "2010-01-12 11:55:00"),
@@ -65,7 +66,6 @@ def test_touching_intervals_no_overlap():
     a = [("2010-01-12 10:00:00", "2010-01-12 11:00:00")]
     b = [("2010-01-12 11:00:00", "2010-01-12 12:00:00")]
 
-   
     result = times.compute_overlap_time(a, b)
 
     # there is no positive-length overlap. We expect [].
