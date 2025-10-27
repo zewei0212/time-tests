@@ -70,3 +70,18 @@ def test_touching_intervals_no_overlap():
 
     # there is no positive-length overlap. We expect [].
     assert result == []
+
+def test_time_range_backwards_raises():
+    """
+    time_range should reject a start > end.
+    We expect a ValueError with a meaningful message.
+    This is negative testing: we assert that bad input is *not allowed*.
+    (pytest.raises is the canonical way to do this.)  # :contentReference[oaicite:8]{index=8}
+    """
+    with pytest.raises(ValueError) as excinfo:
+        times.time_range(
+            "2010-01-12 12:00:00",  # start_time
+            "2010-01-12 10:00:00",  # end_time is EARLIER than start_time → invalid
+            number_of_intervals=1,
+            gap_between_intervals_s=0,
+        )
