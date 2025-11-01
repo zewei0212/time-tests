@@ -1,4 +1,8 @@
 [
+  "test/test_times.py::test_overlap_parametrized[generic]",
+  "test/test_times.py::test_overlap_parametrized[no_overlap]",
+  "test/test_times.py::test_overlap_parametrized[touching_only]",
+  "test/test_times.py::test_time_range_backwards_raises",
   "test_times.py::test_given_input",
   "test_times.py::test_multiple_intervals_each_side",
   "test_times.py::test_no_overlap",
