@@ -4,11 +4,15 @@
   "test/test_times.py::test_overlap_parametrized[touching_only]",
   "test/test_times.py::test_time_range_backwards_raises",
   "test_times.py::test_given_input",
+  "test_times.py::test_iss_passes_happy_path",
+  "test_times.py::test_iss_passes_no_results",
   "test_times.py::test_multiple_intervals_each_side",
   "test_times.py::test_no_overlap",
+  "test_times.py::test_overlap_parametrized[generic]",
   "test_times.py::test_overlap_parametrized[generic_overlap]",
   "test_times.py::test_overlap_parametrized[no_overlap]",
   "test_times.py::test_overlap_parametrized[touching_but_not_overlapping]",
+  "test_times.py::test_overlap_parametrized[touching_only]",
   "test_times.py::test_time_range_backwards_raises",
   "test_times.py::test_touching_intervals_no_overlap"
 ]
